@@ -1,9 +1,10 @@
-import { cn } from "@/lib/cn";
-import React, { ReactNode } from "react";
-import { View as VView, ViewProps } from "react-native";
+import React from 'react';
+import { View as VView, ViewProps } from 'react-native';
+
+import { cn } from '@/lib/cn';
 
 interface IView extends ViewProps {
-  variant?: "base";
+  variant?: 'base';
 }
 
 export const View = ({ children, className }: IView) => {

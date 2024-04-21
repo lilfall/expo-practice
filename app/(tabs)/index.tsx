@@ -1,12 +1,11 @@
-import { ScrollView, Text } from "react-native";
-import React from "react";
-import { View } from "@/components/base/View";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-type Props = {};
+import { View } from '@/components/base/View';
 
-const index = (props: Props) => {
+const index = () => {
   return (
     <SafeAreaView>
       <StatusBar style="dark" />
