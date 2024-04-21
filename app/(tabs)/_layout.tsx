@@ -1,14 +1,12 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+/* eslint-disable react/no-unstable-nested-components */
+import { IconBolt, IconCompassFilled, IconHomeFilled, IconSettingsFilled } from '@tabler/icons-react-native';
+import { BlurView } from 'expo-blur';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
-import { IconDashboard, IconHome, IconSettings } from '@tabler/icons-react-native';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import { useColorScheme } from '@/components/useColorScheme';
+
+import Colors from '@/constants/Colors';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -17,42 +15,48 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: false,
         tabBarStyle: {
           position: 'absolute',
-          margin: 8,
-          borderRadius: 8,
-          height: 50,
+          borderTopWidth: 0,
+          paddingTop: 0,
           elevation: 0,
-          borderTopColor: 'transparent'
+          margin: 8,
+          borderRadius: 40,
+          overflow: 'hidden'
         },
-        tabBarItemStyle: {
-          paddingVertical: 4,
-          elevation: 0
-        }
+        tabBarBackground() {
+          return <BlurView tint="dark" intensity={95} className="w-full h-full overflow-hidden rounded-full" />;
+        },
+        tabBarShowLabel: false
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <IconHome size={22} color={color} />
+          tabBarIcon: ({ color }) => <IconHomeFilled size={20} fill={color} />
         }}
       />
       <Tabs.Screen
         name="two"
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <IconDashboard size={22} color={color} />
+          tabBarIcon: ({ color }) => <IconBolt size={20} color={color} strokeWidth={1} fill={color} />
+        }}
+      />
+      <Tabs.Screen
+        name="explore"
+        options={{
+          title: 'Explore',
+          tabBarIcon: ({ color }) => <IconCompassFilled size={20} fill={color} strokeWidth={1} />
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color }) => <IconSettings size={24} color={color} />
+          tabBarIcon: ({ color }) => <IconSettingsFilled size={20} fill={color} />
         }}
       />
     </Tabs>

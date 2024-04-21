@@ -3,12 +3,12 @@ import { Text } from 'react-native';
 
 import MainTemplate from '@/components/base/MainTemplate';
 
-const two = () => {
+const explore = () => {
   return (
     <MainTemplate>
-      <Text>two</Text>
+      <Text>explore</Text>
     </MainTemplate>
   );
 };
 
-export default two;
+export default explore;

@@ -1,16 +1,15 @@
-import { View, Text } from 'react-native';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text } from 'react-native';
 
-type Props = {};
+import MainTemplate from '@/components/base/MainTemplate';
 
-const settings = (props: Props) => {
+const settings = () => {
   return (
-    <SafeAreaView>
+    <MainTemplate>
       <View>
         <Text>settings</Text>
       </View>
-    </SafeAreaView>
+    </MainTemplate>
   );
 };
 
