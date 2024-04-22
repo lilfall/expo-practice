@@ -6,7 +6,7 @@ import { SafeAreaView as SafeArea, SafeAreaViewProps } from 'react-native-safe-a
 
 import { cn } from '@/lib/cn';
 
-import Header from '../layout/Header';
+import Header from '@/components/layout/Header';
 
 export interface IMainTemplate extends SafeAreaViewProps {
   scrollView?: boolean;
@@ -16,7 +16,7 @@ export interface IMainTemplate extends SafeAreaViewProps {
 
 const MainTemplate = ({ children, scrollView = true, className, headerShown = true, headerPoisiton = 'sticky' }: IMainTemplate) => {
   const { colorScheme } = useColorScheme();
-  const variantStyle = [colorScheme === 'dark' && 'bg-zinc-800', colorScheme === 'light' && 'bg-zinc-200'];
+  const variantStyle = [colorScheme === 'dark' && 'bg-zinc-900', colorScheme === 'light' && 'bg-zinc-200'];
 
   if (scrollView)
     return (
@@ -31,6 +31,7 @@ const MainTemplate = ({ children, scrollView = true, className, headerShown = tr
         <StatusBar />
       </SafeAreaView>
     );
+
   return (
     <SafeAreaView className={cn('h-full w-full', variantStyle, className)}>
       <SafeArea>
